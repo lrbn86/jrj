@@ -18,6 +18,8 @@ public class QuestForTheUserInput {
         System.out.print("What is your quest?! ");
         yourQuest = inputReader.nextLine();
 
+        inputReader.close();
+
         // When we get to our double data type, we can use Scanner's
         // nextDouble method
         // or we can use the Double parseDouble to convert the nextLine's String
