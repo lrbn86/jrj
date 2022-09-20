@@ -38,6 +38,8 @@ public class MyScanner {
         // now wait until the user types their hometown
         hometown = myScanner.nextLine();
 
+        myScanner.close();
+
         // print the information to the console
         System.out.println("Hi " + name + " from " + hometown + ".");
         System.out.println("Your age is: " + age);
