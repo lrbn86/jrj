@@ -30,6 +30,6 @@ public class PassingTheTuringTest {
 
         System.out.println("Well, thanks for talking to me, " + name + "!");
 
-
     }
+
 }
