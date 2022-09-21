@@ -11,6 +11,8 @@ public class MiniMadLibs {
         String noun1, noun2, adjective1, adjective2, pluralNoun1, pluralNoun2, pluralNoun3, infinitiveVerb, pastParticipleVerb;
         int number;
 
+        System.out.println("Let's play MAD LIBS!\n");
+
         System.out.print("I need a noun: ");
         noun1 = sc.nextLine();
         System.out.print("Now an adjective: ");
