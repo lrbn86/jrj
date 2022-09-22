@@ -25,4 +25,12 @@ public class ClassRosterView {
         return currentStudent;
     }
 
+    public void displayCreateStudentBanner() {
+        io.print("=== Create Student ===");
+    }
+
+    public void displayCreateSuccessBanner() {
+        io.readString("Student successfully created. Please hit enter to continue");
+    }
+
 }
