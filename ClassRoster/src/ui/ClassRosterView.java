@@ -1,5 +1,7 @@
 package ui;
 
+import dto.Student;
+
 public class ClassRosterView {
     
     private UserIO io = new UserIOConsoleImpl();
@@ -13,6 +15,14 @@ public class ClassRosterView {
         io.print("5. Exit");
 
         return io.readInt("Please select from the above choices.");
+    }
+
+    public Student getNewStudentInfo() {
+        Student currentStudent = new Student(io.readString("Please enter Student ID"));
+        currentStudent.setFirstName(io.readString("Please enter First Name"));
+        currentStudent.setLastName(io.readString("Please enter Last Name"));
+        currentStudent.setCohort(io.readString("Please enter Cohort"));
+        return currentStudent;
     }
 
 }
