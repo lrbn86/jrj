@@ -6,14 +6,10 @@ import dao.ClassRosterDao;
 import dao.ClassRosterDaoFileImpl;
 import dto.Student;
 import ui.ClassRosterView;
-import ui.UserIO;
-import ui.UserIOConsoleImpl;
-
 public class ClassRosterController {
 
     private ClassRosterView view = new ClassRosterView();
     private ClassRosterDao dao = new ClassRosterDaoFileImpl();
-    private UserIO io = new UserIOConsoleImpl();
 
     public void run() {
 
@@ -40,12 +36,11 @@ public class ClassRosterController {
                     keepGoing = false;
                     break;
                 default:
-                    io.print("UNKNOWN COMMAND");
+                    unknownCommand();
             }
         }
 
-        io.print("GOOD BYE");
-        io.close();
+        exitMessage();
 
     }
 
@@ -78,6 +73,14 @@ public class ClassRosterController {
         String studentId = view.getStudentIdChoice();
         Student removedStudent = dao.removeStudent(studentId);
         view.displayRemoveResult(removedStudent);
+    }
+
+    private void unknownCommand() {
+        view.displayUnknownCommandBanner();
+    }
+
+    private void exitMessage() {
+        view.displayExitBanner();
     }
     
 }
