@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +18,7 @@ public class ClassRosterDaoFileImpl implements ClassRosterDao {
 
     @Override
     public List<Student> getAllStudents() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new ArrayList<Student>(students.values());
     }
 
     @Override

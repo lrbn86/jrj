@@ -1,5 +1,7 @@
 package ui;
 
+import java.util.List;
+
 import dto.Student;
 
 public class ClassRosterView {
@@ -31,6 +33,18 @@ public class ClassRosterView {
 
     public void displayCreateSuccessBanner() {
         io.readString("Student successfully created. Please hit enter to continue");
+    }
+
+    public void displayStudentList(List<Student> studentList) {
+        for (Student currentStudent : studentList) {
+            String studentInfo = String.format("#%s : %s %s %s", currentStudent.getStudentId(), currentStudent.getFirstName(), currentStudent.getLastName(), currentStudent.getCohort());
+            io.print(studentInfo);
+        }
+        io.readString("Please hit enter to continue.");
+    }
+
+    public void displayDisplayAllBanner() {
+        io.print("=== Display All Students ===");
     }
 
 }
