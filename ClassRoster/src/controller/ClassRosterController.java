@@ -3,13 +3,18 @@ package controller;
 import java.util.List;
 
 import dao.ClassRosterDao;
-import dao.ClassRosterDaoFileImpl;
 import dto.Student;
 import ui.ClassRosterView;
+
 public class ClassRosterController {
 
-    private ClassRosterView view = new ClassRosterView();
-    private ClassRosterDao dao = new ClassRosterDaoFileImpl();
+    private ClassRosterView view;
+    private ClassRosterDao dao;
+
+    public ClassRosterController(ClassRosterDao dao, ClassRosterView view) {
+        this.dao = dao;
+        this.view = view;
+    }
 
     public void run() {
 
