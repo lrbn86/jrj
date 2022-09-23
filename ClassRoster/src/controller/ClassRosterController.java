@@ -3,6 +3,7 @@ package controller;
 import java.util.List;
 
 import dao.ClassRosterDao;
+import dao.ClassRosterDaoException;
 import dto.Student;
 import ui.ClassRosterView;
 
@@ -20,29 +21,33 @@ public class ClassRosterController {
 
         boolean keepGoing = true;
         int menuSelection = 0;
-        while (keepGoing) {
+        try {
+            while (keepGoing) {
 
-            menuSelection = getMenuSelection();
+                menuSelection = getMenuSelection();
 
-            switch(menuSelection) {
-                case 1:
-                    listStudents();
-                    break;
-                case 2:
-                    createStudent();
-                    break;
-                case 3:
-                    viewStudent();
-                    break;
-                case 4:
-                    removeStudent();
-                    break;
-                case 5:
-                    keepGoing = false;
-                    break;
-                default:
-                    unknownCommand();
+                switch(menuSelection) {
+                    case 1:
+                        listStudents();
+                        break;
+                    case 2:
+                        createStudent();
+                        break;
+                    case 3:
+                        viewStudent();
+                        break;
+                    case 4:
+                        removeStudent();
+                        break;
+                    case 5:
+                        keepGoing = false;
+                        break;
+                    default:
+                        unknownCommand();
+                }
             }
+        } catch (ClassRosterDaoException e) {
+            view.displayErrorMessage(e.getMessage());
         }
 
         exitMessage();
@@ -53,27 +58,27 @@ public class ClassRosterController {
         return view.printMenuAndGetSelection();
     }
 
-    private void createStudent() {
+    private void createStudent() throws ClassRosterDaoException {
         view.displayCreateStudentBanner();
         Student newStudent = view.getNewStudentInfo();
         dao.addStudent(newStudent.getStudentId(), newStudent);
         view.displayCreateSuccessBanner();
     }
 
-    private void listStudents() {
+    private void listStudents() throws ClassRosterDaoException {
         view.displayDisplayAllBanner();
         List<Student> studentList = dao.getAllStudents();
         view.displayStudentList(studentList);
     }
 
-    private void viewStudent() {
+    private void viewStudent() throws ClassRosterDaoException {
         view.displayDisplayStudentBanner();
         String studentId = view.getStudentIdChoice();
         Student student = dao.getStudent(studentId);
         view.displayStudent(student);
     }
 
-    private void removeStudent() {
+    private void removeStudent() throws ClassRosterDaoException {
         view.displayRemoveStudentBanner();
         String studentId = view.getStudentIdChoice();
         Student removedStudent = dao.removeStudent(studentId);
